@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_hexadecimal.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/24 00:20:08 by coder             #+#    #+#             */
-/*   Updated: 2021/11/07 01:48:11 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/10/29 22:58:11 by coder             #+#    #+#             */
+/*   Updated: 2021/11/07 01:48:08 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(int character)
+int	print_hexadecimal(unsigned int number, const char *type)
 {
-	write(1, &character, 1);
-	return (1);
+	char	*base;
+
+	if (*type == 'x')
+	{
+		base = "0123456789abcdef";
+	}
+	else
+	{
+		base = "0123456789ABCDEF";
+	}
+	return (convert_to_hexadecimal(number, base));
 }

@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/24 00:20:08 by coder             #+#    #+#             */
-/*   Updated: 2021/11/07 01:48:11 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/10/24 23:05:36 by coder             #+#    #+#             */
+/*   Updated: 2021/11/07 01:48:05 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(int character)
+int	print_number(unsigned long int number)
 {
-	write(1, &character, 1);
-	return (1);
+	char	*number_str;
+	int		length;
+
+	length = 1;
+	number_str = ft_itoa(number);
+	length = ft_strlen(number_str);
+	ft_putstr_fd(number_str, 1);
+	free(number_str);
+	return (length);
 }

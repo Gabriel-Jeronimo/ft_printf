@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_string.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/24 00:20:08 by coder             #+#    #+#             */
-/*   Updated: 2021/11/07 01:48:11 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/11/04 22:01:14 by coder             #+#    #+#             */
+/*   Updated: 2021/11/07 01:47:51 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char(int character)
+int	print_string(char *character)
 {
-	write(1, &character, 1);
-	return (1);
+	if (!character)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (6);
+	}
+	ft_putstr_fd(character, 1);
+	return (ft_strlen(character));
 }
