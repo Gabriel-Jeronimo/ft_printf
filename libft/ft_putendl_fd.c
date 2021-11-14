@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:09:38 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/13 17:06:54 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/30 14:28:44 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/09/14 14:27:46 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_number(unsigned long int number)
+void	ft_putendl_fd(char *s, int fd)
 {
-	char	*number_str;
-	int		length;
-
-	length = 1;
-	number_str = ft_litoa(number);
-	length = ft_strlen(number_str);
-	ft_putstr_fd(number_str, 1);
-	free(number_str);
-	return (length);
+	if (!s || !fd)
+		return ;
+	while (*s)
+	{
+		write(fd, s, 1);
+		s++;
+	}
+	write(fd, "\n", 1);
 }

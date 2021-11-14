@@ -6,7 +6,7 @@
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 16:09:12 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/10 16:43:11 by gjeronim         ###   ########.fr       */
+/*   Updated: 2021/11/13 00:37:13 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	match_flag(const char *character, va_list args)
 		return (print_hexadecimal(va_arg(args, unsigned int), character));
 	else if (*character == 'p')
 		return (print_pointer(va_arg(args, unsigned long int)));
-	else
-		write(1, character, 1);
-	return (1);
+	else if (*character == '%')
+		return (write(1, character, 1));
+	return (0);
 }
 
 int	ft_printf(const char *input, ...)
@@ -40,16 +40,13 @@ int	ft_printf(const char *input, ...)
 	va_start(args, input);
 	while (*input)
 	{
-		if (*input == '%')
+		if (*input == '%' && ft_strchr("cspudixX%", *(input + 1)))
 		{
 			input++;
 			written_chars += match_flag(input, args);
 		}
 		else
-		{
-			write(1, input, 1);
-			written_chars++;
-		}
+			written_chars += write(1, input, 1);
 		input++;
 	}
 	va_end(args);

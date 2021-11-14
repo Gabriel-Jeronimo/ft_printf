@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_string.c                                     :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:10:00 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/10 16:43:53 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/19 18:37:54 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/09/04 20:12:49 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_string(char *character)
+char	*ft_strchr(const char *s, int c)
 {
-	if (!character)
+	size_t	counter;
+
+	counter = 0;
+	while (counter <= ft_strlen(s))
 	{
-		ft_putstr_fd("(null)", 1);
-		return (6);
+		if (*(s + counter) == (char)c)
+			return ((char *)s + counter);
+		counter++;
 	}
-	ft_putstr_fd(character, 1);
-	return (ft_strlen(character));
+	return (NULL);
 }

@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:09:38 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/13 17:06:54 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/23 10:19:27 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/09/14 14:51:15 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_number(unsigned long int number)
+void	*ft_calloc(size_t num, size_t size)
 {
-	char	*number_str;
-	int		length;
+	char	*pointer;
 
-	length = 1;
-	number_str = ft_litoa(number);
-	length = ft_strlen(number_str);
-	ft_putstr_fd(number_str, 1);
-	free(number_str);
-	return (length);
+	pointer = malloc(num * size);
+	if (!pointer)
+		return (NULL);
+	ft_bzero(pointer, num * size);
+	return (pointer);
 }

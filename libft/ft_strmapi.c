@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:09:38 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/13 17:06:54 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/30 13:10:47 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/08/30 13:37:22 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_number(unsigned long int number)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*number_str;
-	int		length;
+	char	*newstr;
+	size_t	index;
 
-	length = 1;
-	number_str = ft_litoa(number);
-	length = ft_strlen(number_str);
-	ft_putstr_fd(number_str, 1);
-	free(number_str);
-	return (length);
+	if (!s || !f)
+		return (NULL);
+	newstr = (char *)malloc(ft_strlen((char *)s) + 1);
+	if (!newstr)
+		return (NULL);
+	index = 0;
+	while (s[index])
+	{
+		newstr[index] = f(index, s[index]);
+		index++;
+	}
+	newstr[index] = '\0';
+	return (newstr);
 }

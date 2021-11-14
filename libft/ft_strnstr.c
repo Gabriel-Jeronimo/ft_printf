@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:09:38 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/13 17:06:54 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/19 20:28:55 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/09/10 19:44:28 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_number(unsigned long int number)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	char	*number_str;
-	int		length;
+	size_t	aux_len;
 
-	length = 1;
-	number_str = ft_litoa(number);
-	length = ft_strlen(number_str);
-	ft_putstr_fd(number_str, 1);
-	free(number_str);
-	return (length);
+	if (*s2 == '\0')
+		return ((char *)s1);
+	aux_len = ft_strlen(s2);
+	while (*s1 != '\0' && len >= aux_len)
+	{
+		if (*s1 == *s2 && ft_strncmp(s1, s2, aux_len) == 0)
+			return ((char *)s1);
+		len--;
+		s1++;
+	}
+	return (NULL);
 }

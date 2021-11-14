@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_pointer.c                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:09:54 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/10 16:43:48 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/19 18:49:50 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/08/25 10:23:08 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_pointer(unsigned long int num)
-{	
-	if (!num && !IS_MACOS)
-		return (write(1, "(nil)", 5));
-	write(1, "0x", 2);
-	return (convert_to_hexadecimal(num, "0123456789abcdef") + 2);
+char	*ft_strrchr(const char *s, int c)
+{
+	size_t	counter;
+
+	counter = ft_strlen((char *)s) + 1;
+	while (counter--)
+	{
+		if (*(s + counter) == (char) c)
+		{
+			return ((char *)(s + counter));
+		}
+	}
+	return (NULL);
 }

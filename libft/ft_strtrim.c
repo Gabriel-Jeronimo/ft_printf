@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:09:38 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/13 17:06:54 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/26 14:45:19 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/09/08 19:36:49 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_number(unsigned long int number)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*number_str;
-	int		length;
+	size_t		size;
+	char		*newstring;
 
-	length = 1;
-	number_str = ft_litoa(number);
-	length = ft_strlen(number_str);
-	ft_putstr_fd(number_str, 1);
-	free(number_str);
-	return (length);
+	if (!s1 || !set)
+		return (NULL);
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	size = ft_strlen(s1);
+	while (size && ft_strchr(set, s1[size]))
+		size--;
+	newstring = ft_substr((char *)s1, 0, size + 1);
+	return (newstring);
 }

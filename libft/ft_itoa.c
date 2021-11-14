@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_utils.c                                     :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:10:06 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/13 17:06:58 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/27 16:28:27 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/09/01 16:36:22 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-long int	ft_digits_len(long int n)
+static long int	ft_digits_len(int n)
 {
-	int	len;
+	int					len;
 
 	len = 0;
 	if (n <= 0)
@@ -27,11 +27,11 @@ long int	ft_digits_len(long int n)
 	return (len);
 }
 
-char	*ft_litoa(long int n)
+char	*ft_itoa(int n)
 {
-	char			*result;
-	long int		len;
-	unsigned int	number;
+	char				*result;
+	long int			len;
+	unsigned int		number;
 
 	len = ft_digits_len(n);
 	result = (char *)malloc(sizeof(char) * (len + 1));

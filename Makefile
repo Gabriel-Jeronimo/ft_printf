@@ -2,27 +2,32 @@ NAME=libftprintf.a
 
 CC=clang
 
+LIBFT = libft
+
 CFLAGS=-Wall -Wextra -Werror
 
-SRC= ft_printf.c print_char.c print_number.c printf_utils.c print_hexadecimal.c print_pointer.c print_string.c
+SRC= ft_printf.c print_char.c print_number.c print_hexadecimal.c printf_utils.c 
 
 RM=rm -f
 
 OBJ=$(SRC:.c=.o)
 
-$(NAME): ft_printf.h
+$(NAME): $(OBJ)
+	@make -C $(LIBFT)
+	@cp libft/libft.a ./$(NAME)
 	$(CC) $(CFLAGS) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
 
 all: $(NAME)
 
 clean:
 	$(RM) $(OBJ)
+	@make clean -C $(LIBFT)
 
 fclean: clean
 	$(RM) $(NAME)
+	@make fclean -C $(LIBFT)
 
 re: fclean all
 
-.PHONY: clean fclean
+PHONY: clean fclean

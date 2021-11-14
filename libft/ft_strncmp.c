@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_number.c                                     :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gjeronim <gjeronim@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 16:09:38 by gjeronim          #+#    #+#             */
-/*   Updated: 2021/11/13 17:06:54 by gjeronim         ###   ########.fr       */
+/*   Created: 2021/08/18 17:06:36 by gjeronim          #+#    #+#             */
+/*   Updated: 2021/09/07 15:55:58 by gjeronim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-int	print_number(unsigned long int number)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*number_str;
-	int		length;
+	unsigned int	counter;
 
-	length = 1;
-	number_str = ft_litoa(number);
-	length = ft_strlen(number_str);
-	ft_putstr_fd(number_str, 1);
-	free(number_str);
-	return (length);
+	counter = 0;
+	if (n == 0)
+		return (0);
+	while ((s1[counter] != 0 && s1[counter] == s2[counter]) && counter < n - 1)
+		counter++;
+	return ((unsigned char)s1[counter] - (unsigned char)s2[counter]);
 }
