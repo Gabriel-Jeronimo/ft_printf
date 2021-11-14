@@ -1,3 +1,4 @@
+![header_printf](https://user-images.githubusercontent.com/55462130/141702042-ebd61a9e-cc1b-41d3-8742-509de7a4424b.png)
 ## Introduction to ft_printf 👋
 
 **ft_printf** is the third project at the programming school, École 42. The versatility of the printf function in C represents a great exercise in programming for
