@@ -1,6 +1,4 @@
-# ft_printf
-
-## Introduction to the exercise 👋
+## Introduction to ft_printf 👋
 
 **ft_printf** is the third project at the programming school, École 42. The versatility of the printf function in C represents a great exercise in programming for
 us. This project is of moderate difficulty. It will enable we to discover variadic functions in C.
@@ -14,7 +12,6 @@ ft_printf is a project that mimics the real printf function.
 ## External functions
 ```malloc```, ```free```, ```write```, ```va_start```, ```va_arg```, ```va_copy```, ```va_end```
 
----
 ## Mandatory requirements
 ```%c``` print a single character.
 
@@ -32,4 +29,28 @@ ft_printf is a project that mimics the real printf function.
 
 ```%X``` print a number in hexadecimal (base 16), with uppercase.
 
-```%%``` print a percent sign
+```%%``` print a percent sign.
+
+---
+
+## How to test
+1. Clone the repository.
+```
+git clone https://github.com/Gabriel-Jeronimo/ft_printf.git
+```
+2. Access the project.
+```
+cd ft_printf
+```
+3. Run makefile.
+```
+make all
+```
+4. Run main.c and be happy. 🥳
+```
+clang -Wall -Werror -Wextra main.c -L. -I. -lftprintf && ./a.out
+```
+Feel free to test more things in main.c or in your projects. 😁 
+
+Please give a star to the repository if you liked this project. :star:
+
